@@ -92,7 +92,7 @@ ul{margin:0;padding-left:22px;font-size:19px;line-height:1.5}li{margin-bottom:4p
   };
 
   const palette = [
-    ['Roxo cabelo', '#4D2C93'], ['Roxo sombra', '#2D1760'], ['Lilás brilho', '#B8A2F5'], ['Roxo moletom', '#33205F'],
+    ['Cabelo prata', '#E4E4E9'], ['Sombra cabelo', '#B4B4C0'], ['Roxo moletom', '#3A2578'], ['Roxo escuro', '#24124F'],
     ['Verde-menta', '#3DE0C2'], ['Creme (fone)', '#F4EEE2'], ['Âmbar (olhos)', '#FF9B1D'], ['Pele', '#FBDCB4'],
     ['Blush', '#EE8B8B'], ['Contorno', '#15101D'],
   ];
@@ -103,14 +103,14 @@ ul{margin:0;padding-left:22px;font-size:19px;line-height:1.5}li{margin-bottom:4p
     <div style="display:grid;grid-template-columns:560px 1fr;gap:34px;margin-top:34px">
       <div class="card" style="padding:0;overflow:hidden;background:radial-gradient(circle at 50% 38%,#ffffff 0,#e9defc 62%,#d8c7f7 100%);display:flex;flex-direction:column;align-items:center;padding:26px 0 24px">
         ${inline('livy', 'feliz', 'f', 470)}
-        <div style="margin-top:6px;text-align:center">${callout('Roxo escuro')}${callout('Fone de ouvido nos ombros')}</div>
+        <div style="margin-top:6px;text-align:center">${callout('Moletom roxo escuro')}${callout('Fone de ouvido nos ombros')}</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-content:start">
         <div class="card"><h3>Quem é</h3><div style="font-size:20px;line-height:1.5"><b>Livy</b>, 10 anos, 5º ano. Curiosa, esperta demais para a idade e incapaz de deixar um mistério sem resolver. Conta as histórias da família olhando direto para a câmera, como quem fala com a melhor amiga.</div></div>
         <div class="card"><h3>Marcas fixas (nunca mudam)</h3><ul>
-          <li>Chanel curto <b>roxo escuro</b>, franja repicada, brilho lilás</li>
+          <li>Chanel curto <b>prateado</b>, franja repicada e pontas abertas</li>
           <li><b>Fone de ouvido</b> creme com detalhe verde-menta, apoiado nos ombros</li>
-          <li>Moletom roxo escuro com cordões brancos</li>
+          <li><b>Moletom roxo escuro</b> com cordões brancos</li>
           <li>Olhos grandes âmbar, blush em traços, nariz de ponto</li></ul></div>
         <div class="card" style="grid-column:1/3"><h3>Paleta</h3><div class="sw">${sw}</div></div>
         <div class="card"><h3>Personalidade</h3>

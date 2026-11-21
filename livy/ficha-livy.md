@@ -5,10 +5,10 @@ Narradora da série de vídeos curtos verticais (TikTok/Reels). Tudo aqui é **f
 ## 1. Visual
 - **Nome / idade:** Livy, 10 anos (5º ano).
 - **Estilo:** anime 2D, contorno preto grosso, sombra chapada (cel), olhos grandes com brilho branco, blush em três traços, nariz de ponto. Mesma linguagem da referência.
-- **Cabelo:** chanel curto **roxo escuro** (`#4D2C93`, sombra `#2D1760`), franja repicada com ponta central longa, brilhos lilás (`#B8A2F5`) em arco no topo.
+- **Cabelo:** igual ao da referência — chanel curto **prateado** (`#E4E4E9`, sombra `#B4B4C0`), volumoso, franja repicada com ponta central longa, pontas abertas para fora e brilhos brancos em arco no topo.
 - **Olhos:** grandes, âmbar/laranja com degradê (`#B4420B` → `#FF9B1D` → `#FFE24D`), dois brilhos brancos.
 - **Pele:** clara (`#FBDCB4`), blush `#EE8B8B`.
-- **Roupa fixa:** moletom **roxo escuro** (`#33205F`) com cordões brancos.
+- **Roupa fixa (única parte roxa):** moletom **roxo escuro** (`#3A2578`, detalhes `#24124F`) com cordões brancos.
 - **Marca registrada:** **fone de ouvido** creme (`#F4EEE2`) com detalhe verde-menta (`#3DE0C2`), sempre apoiado nos ombros.
 - **Contorno:** `#15101D`, 5 px num quadro de 512×640.
 
@@ -48,10 +48,10 @@ Curiosa demais, observadora, teimosa, honesta (não sabe mentir), exagera um pou
 Cada um tem as 5 expressões em `avatares/2-elenco/expressoes/`. Nomes e idades são sugestões: dá para trocar sem mexer no desenho. A mãe, a Livy e a irmã compartilham os olhos âmbar (traço de família).
 
 ## 6. Prompt-mestre (para gerar imagens/vídeo mantendo o personagem)
-> Livy, 10-year-old girl, 2D anime style, thick black outlines, flat cel shading, large amber-orange gradient eyes with two white highlights, light pink hatched blush, tiny dot nose, short dark-purple bob with jagged bangs and lavender hair shines, dark-purple hoodie with white drawstrings, cream headphones with mint-green accents resting on her shoulders, front-facing bust, transparent background.
+> Livy, 10-year-old girl, 2D anime style, thick black outlines, flat cel shading, large amber-orange gradient eyes with two white highlights, light pink hatched blush, tiny dot nose, short silver-gray voluminous bob with jagged bangs, flared pointed tips and white hair shines, dark-purple hoodie with white drawstrings, cream headphones with mint-green accents resting on her shoulders, front-facing bust, transparent background.
 
 ## 7. Regras de consistência
-1. Nunca mudar cabelo, moletom ou fone, nem o formato dos olhos.
+1. Nunca mudar cabelo prateado, moletom roxo ou fone, nem o formato dos olhos.
 2. Contorno sempre preto e grosso; sombras chapadas, sem degradê (exceto a íris).
 3. Reaproveitar os arquivos em `avatares/`: PNG 1024×1280 com fundo transparente para editar no CapCut/Premiere, SVG para qualquer tamanho.
 4. Novos personagens: criar no gerador (`gerador/personagens.js`), que já aplica o mesmo rosto, olhos, blush e contorno.

@@ -43,10 +43,10 @@ const FACES = {
 };
 const PROFILES = {
   //        olhos: rx ry  centro-y  dx   boca-y  nariz-y  pescoço  ombro-x
-  child:  { rx: 34, ry: 38, ey: 336, dx: 60, my: 419, ny: 389, neck: 44, xl: 52, mscale: 1.0, ear: false },
-  adult:  { rx: 25, ry: 27, ey: 332, dx: 58, my: 418, ny: 388, neck: 50, xl: 34, mscale: 0.92, ear: true },
-  elder:  { rx: 21, ry: 23, ey: 334, dx: 56, my: 420, ny: 390, neck: 50, xl: 40, mscale: 0.9, ear: true },
-  square: { rx: 24, ry: 26, ey: 332, dx: 60, my: 424, ny: 392, neck: 62, xl: 10, mscale: 1.0, ear: true },
+  child:  { rx: 34, ry: 38, ey: 336, dx: 60, my: 419, ny: 389, neck: 44, xl: 52, mscale: 1.0, ear: false, dy: 34 },
+  adult:  { rx: 25, ry: 27, ey: 332, dx: 58, my: 418, ny: 388, neck: 50, xl: 34, mscale: 0.92, ear: true, dy: 26 },
+  elder:  { rx: 21, ry: 23, ey: 334, dx: 56, my: 420, ny: 390, neck: 50, xl: 40, mscale: 0.9, ear: true, dy: 26 },
+  square: { rx: 24, ry: 26, ey: 332, dx: 60, my: 424, ny: 392, neck: 62, xl: 10, mscale: 1.0, ear: true, dy: 22 },
 };
 
 // ---------------------------------------------------------------- olhos
@@ -222,19 +222,25 @@ function avatar(c, exprName = 'feliz', uid = 'a') {
   const neckD = `M${256 - nk} 420 L${256 - nk - 2} 548 L${256 + nk + 2} 548 L${256 + nk} 420Z`;
   s += `<clipPath id="${uid}neck"><path d="${neckD}"/></clipPath></defs>`;
 
-  s += parts.back || '';
+  const dy = p.dy;
+  const H0 = `<g transform="translate(0 ${dy})">`;
+  s += H0 + (parts.back || '');
   if (p.ear) {
     const ear = (x) => `<ellipse cx="${x}" cy="${p.ey + 4}" rx="16" ry="25" fill="${c.skin}" stroke="${INK}" stroke-width="4.5"/><path d="M${x + (x < 256 ? 3 : -3)} ${p.ey - 6} Q${x + (x < 256 ? -4 : 4)} ${p.ey + 4} ${x + (x < 256 ? 3 : -3)} ${p.ey + 16}" fill="none" stroke="${c.skinLine || '#c98f62'}" stroke-width="3" stroke-linecap="round"/>`;
     s += ear(147) + ear(365);
   }
+  s += '</g>';
   if (parts.preNeck) s += parts.preNeck;
   // pescoço + sombra do queixo
+  s += H0;
   s += `<path d="${neckD}" fill="${c.skin}"/>`;
   s += `<g clip-path="url(#${uid}neck)"><path d="${faceD}" transform="translate(0 30)" fill="${c.skinShade}"/></g>`;
   s += L(`M${256 - nk} 420 L${256 - nk - 2} 548 M${256 + nk} 420 L${256 + nk + 2} 548`, 5);
+  s += '</g>';
   s += parts.body || '';
   s += parts.bodyFront || '';
-  // rosto
+  // rosto (tudo daqui em diante desce junto com a cabeça)
+  s += H0;
   s += P(faceD, c.skin, 5);
   s += parts.faceDecor || '';           // rugas, sombras
   // blush
@@ -261,7 +267,7 @@ function avatar(c, exprName = 'feliz', uid = 'a') {
   s += `<g transform="translate(${exR} ${p.ey}) scale(-1 1)">${L(browR, bw, bcol)}</g>`;
   s += parts.over || '';
   if (!c.noSymbols) s += symbols(E.sym, uid);
-  return s + '</svg>';
+  return s + '</g></svg>';
 }
 
 module.exports = { avatar, INK, P, L, mirror, symPath, bodyShape, PROFILES, EXPR, n1 };

@@ -36,25 +36,26 @@ const button = (x, y, col = '#f4eee2') => `<circle cx="${x}" cy="${y}" r="6" fil
 const chars = {};
 
 // =================================================================== LIVY
-const LIVY_HAIR = { base: '#4d2c93', shade: '#2d1760', hi: '#b8a2f5' };
+// Cabelo prateado como na referência; só a roupa é roxa.
+const LIVY_HAIR = { base: '#e4e4e9', shade: '#b4b4c0', hi: '#ffffff' };
+const HOODIE = '#3a2578', HOODIE_DARK = '#24124f';
 chars.livy = {
   key: 'livy', nome: 'Livy', profile: 'child',
   skin: '#fbdcb4', skinShade: '#e8b98c', skinLine: '#cf9a6c',
-  eyeCols: ['#b4420b', '#ff9b1d', '#ffe24d'], blush: '#ee8b8b', browColor: '#2a1650',
+  eyeCols: ['#b4420b', '#ff9b1d', '#ffe24d'], blush: '#ee8b8b', browColor: '#2b2b36',
   parts(ctx) {
     const { uid } = ctx, H = LIVY_HAIR;
-    const backD = symPath([256, 54], [
-      ['C', 164, 54, 90, 118, 88, 228],
-      ['C', 90, 300, 82, 380, 62, 442],
-      ['L', 108, 424], ['L', 92, 476], ['L', 142, 434], ['L', 138, 480], ['L', 186, 436], ['L', 256, 424]]);
+    const backD = symPath([256, 56], [
+      ['C', 158, 52, 70, 114, 66, 238],
+      ['C', 64, 320, 46, 392, 18, 452],
+      ['L', 78, 432], ['L', 56, 484], ['L', 112, 442], ['L', 102, 490], ['L', 156, 446], ['L', 150, 482], ['L', 196, 436], ['L', 256, 424]]);
     const capD = symPath([256, 50], [
-      ['C', 172, 50, 102, 114, 104, 228],
-      ['C', 102, 292, 98, 352, 104, 420],
-      ['C', 126, 394, 148, 330, 156, 264],
-      ['L', 176, 224], ['L', 192, 258], ['L', 216, 226], ['L', 234, 264], ['L', 244, 236], ['L', 256, 306]]);
+      ['C', 168, 48, 90, 112, 90, 234],
+      ['C', 88, 300, 80, 368, 58, 432],
+      ['C', 102, 412, 140, 344, 152, 264],
+      ['L', 172, 222], ['L', 188, 262], ['L', 212, 224], ['L', 232, 268], ['L', 244, 238], ['L', 256, 314]]);
     const back = P(backD, H.shade, 5);
-    const preNeck = `<ellipse cx="256" cy="512" rx="86" ry="32" fill="#1f1240" stroke="${INK}" stroke-width="5"/>`;
-    const hood = '#33205f';
+    const preNeck = `<ellipse cx="256" cy="512" rx="86" ry="32" fill="${HOODIE_DARK}" stroke="${INK}" stroke-width="5"/>`;
     const strings = `${L('M226 560 C222 584 228 604 222 626', 9, INK)}${L('M226 560 C222 584 228 604 222 626', 4.5, '#efe8ff')}`
       + `${L('M286 560 C290 584 284 604 290 626', 9, INK)}${L('M286 560 C290 584 284 604 290 626', 4.5, '#efe8ff')}`
       + `<ellipse cx="222" cy="629" rx="5" ry="7" fill="#efe8ff" stroke="${INK}" stroke-width="3"/><ellipse cx="290" cy="629" rx="5" ry="7" fill="#efe8ff" stroke="${INK}" stroke-width="3"/>`;
@@ -66,13 +67,16 @@ chars.livy = {
       + `<rect x="-20" y="-32" width="40" height="64" rx="18" fill="#2b1a55" stroke="${INK}" stroke-width="3"/>`
       + `<rect x="-14" y="-26" width="28" height="52" rx="13" fill="#3de0c2"/>`
       + `<rect x="-8" y="-19" width="6" height="20" rx="3" fill="#fff" opacity="0.85"/></g>`;
-    const body = bodyShape(ctx, { fill: hood, nw: 54, nl: 24, extra: folds }) + band() + mirror(band());
+    const body = bodyShape(ctx, { fill: HOODIE, nw: 54, nl: 24, extra: folds }) + band() + mirror(band());
     const collar = `<path d="M202 520 C214 552 298 552 310 520" fill="none" stroke="${INK}" stroke-width="22" stroke-linecap="round"/>`
-      + `<path d="M202 520 C214 552 298 552 310 520" fill="none" stroke="#1f1240" stroke-width="13" stroke-linecap="round"/>`;
+      + `<path d="M202 520 C214 552 298 552 310 520" fill="none" stroke="${HOODIE_DARK}" stroke-width="13" stroke-linecap="round"/>`;
     const bodyFront = collar + strings + cup(138, 572, -12) + cup(374, 572, 12);
     const faceDecor = foreheadShadow(uid, capD, '#e8b98c', 18);
-    const front = shadedHair(uid, 'cap', capD, H, 16)
-      + shineBoth(H, [256, 50], [172, 50], [102, 114], [104, 228], [0.2, 0.32, 0.44, 0.56, 0.68], 26);
+    // fios finos no cabelo lateral (como na referência)
+    const strands = L('M80 250 C78 310 72 370 62 418 M104 262 C102 320 96 372 88 412', 2.6, '#8d8d9c', 'opacity="0.9"');
+    const front = shadedHair(uid, 'cap', capD, H, 18)
+      + strands + mirror(strands)
+      + shineBoth(H, [256, 50], [168, 48], [90, 112], [90, 234], [0.18, 0.3, 0.42, 0.54, 0.66], 28, [256, 250], 24, 6);
     return { back, preNeck, body, bodyFront, faceDecor, front };
   },
 };
