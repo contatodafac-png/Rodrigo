@@ -1,0 +1,13 @@
+[
+ {"id":"abertura","title":"O COLISEU","sub":"ROMA · ANO 72","text":"Roma, ano setenta e dois. O imperador decide construir algo que o mundo nunca viu."},
+ {"id":"vespasiano","title":"VESPASIANO","sub":"IMPERADOR DE ROMA","text":"Vespasiano queria dar ao povo um presente: uma arena gigante, bem no centro da cidade."},
+ {"id":"obra","title":"A OBRA","sub":"CERCA DE DEZ ANOS","text":"Milhares de trabalhadores levantaram arcos de pedra e concreto, um andar sobre o outro."},
+ {"id":"gigante","title":"UM GIGANTE","sub":"189 × 156 METROS","text":"Quase cinquenta metros de altura. Cabiam cerca de cinquenta mil pessoas."},
+ {"id":"portoes","title":"OITENTA PORTÕES","sub":"ENTRAR E SAIR EM MINUTOS","text":"Oitenta entradas numeradas deixavam o público entrar e sair em poucos minutos."},
+ {"id":"inauguracao","title":"ANO 80","sub":"TITO INAUGURA A ARENA","text":"No ano oitenta, Tito, filho de Vespasiano, inaugura a arena com cem dias de festa."},
+ {"id":"espetaculo","title":"ESPETÁCULO","sub":"GLADIADORES E FERAS","text":"Gladiadores, feras de terras distantes e, dizem, até batalhas navais."},
+ {"id":"subsolo","title":"POR BAIXO DA AREIA","sub":"TÚNEIS, JAULAS E ELEVADORES","text":"Sob o chão, túneis e elevadores levavam as feras direto para a arena."},
+ {"id":"toldo","title":"O TOLDO","sub":"MANOBRADO POR MARINHEIROS","text":"Um enorme toldo, manobrado por marinheiros, protegia o público do sol."},
+ {"id":"queda","title":"O FIM DOS JOGOS","sub":"TERREMOTOS E SAQUES","text":"Os jogos acabaram. Terremotos derrubaram parte das paredes, e a pedra virou material de construção."},
+ {"id":"hoje","title":"HOJE","sub":"SÍMBOLO DE ROMA","text":"Quase dois mil anos depois, o Coliseu continua de pé, e recebe milhões de visitantes por ano."}
+]

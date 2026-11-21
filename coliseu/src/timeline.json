@@ -1,0 +1,867 @@
+{
+ "fps": 30,
+ "total": 1737,
+ "scenes": [
+  {
+   "id": "abertura",
+   "title": "O COLISEU",
+   "sub": "ROMA · ANO 72",
+   "text": "Roma, ano setenta e dois. O imperador decide construir algo que o mundo nunca viu.",
+   "audio": "audio/n00_t.wav",
+   "from": 0,
+   "frames": 159,
+   "words": [
+    {
+     "w": "Roma,",
+     "s": 0.2,
+     "e": 0.654
+    },
+    {
+     "w": "ano",
+     "s": 0.654,
+     "e": 0.848
+    },
+    {
+     "w": "setenta",
+     "s": 0.848,
+     "e": 1.302
+    },
+    {
+     "w": "e",
+     "s": 1.302,
+     "e": 1.367
+    },
+    {
+     "w": "dois.",
+     "s": 1.367,
+     "e": 1.821
+    },
+    {
+     "w": "O",
+     "s": 1.821,
+     "e": 1.886
+    },
+    {
+     "w": "imperador",
+     "s": 1.886,
+     "e": 2.47
+    },
+    {
+     "w": "decide",
+     "s": 2.47,
+     "e": 2.859
+    },
+    {
+     "w": "construir",
+     "s": 2.859,
+     "e": 3.442
+    },
+    {
+     "w": "algo",
+     "s": 3.442,
+     "e": 3.702
+    },
+    {
+     "w": "que",
+     "s": 3.702,
+     "e": 3.896
+    },
+    {
+     "w": "o",
+     "s": 3.896,
+     "e": 3.961
+    },
+    {
+     "w": "mundo",
+     "s": 3.961,
+     "e": 4.285
+    },
+    {
+     "w": "nunca",
+     "s": 4.285,
+     "e": 4.61
+    },
+    {
+     "w": "viu.",
+     "s": 4.61,
+     "e": 4.999
+    }
+   ]
+  },
+  {
+   "id": "vespasiano",
+   "title": "VESPASIANO",
+   "sub": "IMPERADOR DE ROMA",
+   "text": "Vespasiano queria dar ao povo um presente: uma arena gigante, bem no centro da cidade.",
+   "audio": "audio/n01_t.wav",
+   "from": 159,
+   "frames": 166,
+   "words": [
+    {
+     "w": "Vespasiano",
+     "s": 0.2,
+     "e": 0.847
+    },
+    {
+     "w": "queria",
+     "s": 0.847,
+     "e": 1.235
+    },
+    {
+     "w": "dar",
+     "s": 1.235,
+     "e": 1.429
+    },
+    {
+     "w": "ao",
+     "s": 1.429,
+     "e": 1.559
+    },
+    {
+     "w": "povo",
+     "s": 1.559,
+     "e": 1.817
+    },
+    {
+     "w": "um",
+     "s": 1.817,
+     "e": 1.947
+    },
+    {
+     "w": "presente:",
+     "s": 1.947,
+     "e": 2.658
+    },
+    {
+     "w": "uma",
+     "s": 2.658,
+     "e": 2.853
+    },
+    {
+     "w": "arena",
+     "s": 2.853,
+     "e": 3.176
+    },
+    {
+     "w": "gigante,",
+     "s": 3.176,
+     "e": 3.823
+    },
+    {
+     "w": "bem",
+     "s": 3.823,
+     "e": 4.017
+    },
+    {
+     "w": "no",
+     "s": 4.017,
+     "e": 4.146
+    },
+    {
+     "w": "centro",
+     "s": 4.146,
+     "e": 4.535
+    },
+    {
+     "w": "da",
+     "s": 4.535,
+     "e": 4.664
+    },
+    {
+     "w": "cidade.",
+     "s": 4.664,
+     "e": 5.246
+    }
+   ]
+  },
+  {
+   "id": "obra",
+   "title": "A OBRA",
+   "sub": "CERCA DE DEZ ANOS",
+   "text": "Milhares de trabalhadores levantaram arcos de pedra e concreto, um andar sobre o outro.",
+   "audio": "audio/n02_t.wav",
+   "from": 325,
+   "frames": 162,
+   "words": [
+    {
+     "w": "Milhares",
+     "s": 0.2,
+     "e": 0.702
+    },
+    {
+     "w": "de",
+     "s": 0.702,
+     "e": 0.827
+    },
+    {
+     "w": "trabalhadores",
+     "s": 0.827,
+     "e": 1.643
+    },
+    {
+     "w": "levantaram",
+     "s": 1.643,
+     "e": 2.27
+    },
+    {
+     "w": "arcos",
+     "s": 2.27,
+     "e": 2.584
+    },
+    {
+     "w": "de",
+     "s": 2.584,
+     "e": 2.709
+    },
+    {
+     "w": "pedra",
+     "s": 2.709,
+     "e": 3.023
+    },
+    {
+     "w": "e",
+     "s": 3.023,
+     "e": 3.086
+    },
+    {
+     "w": "concreto,",
+     "s": 3.086,
+     "e": 3.776
+    },
+    {
+     "w": "um",
+     "s": 3.776,
+     "e": 3.901
+    },
+    {
+     "w": "andar",
+     "s": 3.901,
+     "e": 4.215
+    },
+    {
+     "w": "sobre",
+     "s": 4.215,
+     "e": 4.529
+    },
+    {
+     "w": "o",
+     "s": 4.529,
+     "e": 4.592
+    },
+    {
+     "w": "outro.",
+     "s": 4.592,
+     "e": 5.094
+    }
+   ]
+  },
+  {
+   "id": "gigante",
+   "title": "UM GIGANTE",
+   "sub": "189 × 156 METROS",
+   "text": "Quase cinquenta metros de altura. Cabiam cerca de cinquenta mil pessoas.",
+   "audio": "audio/n03_t.wav",
+   "from": 487,
+   "frames": 141,
+   "words": [
+    {
+     "w": "Quase",
+     "s": 0.2,
+     "e": 0.518
+    },
+    {
+     "w": "cinquenta",
+     "s": 0.518,
+     "e": 1.089
+    },
+    {
+     "w": "metros",
+     "s": 1.089,
+     "e": 1.47
+    },
+    {
+     "w": "de",
+     "s": 1.47,
+     "e": 1.597
+    },
+    {
+     "w": "altura.",
+     "s": 1.597,
+     "e": 2.169
+    },
+    {
+     "w": "Cabiam",
+     "s": 2.169,
+     "e": 2.55
+    },
+    {
+     "w": "cerca",
+     "s": 2.55,
+     "e": 2.867
+    },
+    {
+     "w": "de",
+     "s": 2.867,
+     "e": 2.994
+    },
+    {
+     "w": "cinquenta",
+     "s": 2.994,
+     "e": 3.566
+    },
+    {
+     "w": "mil",
+     "s": 3.566,
+     "e": 3.756
+    },
+    {
+     "w": "pessoas.",
+     "s": 3.756,
+     "e": 4.391
+    }
+   ]
+  },
+  {
+   "id": "portoes",
+   "title": "OITENTA PORTÕES",
+   "sub": "ENTRAR E SAIR EM MINUTOS",
+   "text": "Oitenta entradas numeradas deixavam o público entrar e sair em poucos minutos.",
+   "audio": "audio/n04_t.wav",
+   "from": 628,
+   "frames": 146,
+   "words": [
+    {
+     "w": "Oitenta",
+     "s": 0.2,
+     "e": 0.643
+    },
+    {
+     "w": "entradas",
+     "s": 0.643,
+     "e": 1.149
+    },
+    {
+     "w": "numeradas",
+     "s": 1.149,
+     "e": 1.718
+    },
+    {
+     "w": "deixavam",
+     "s": 1.718,
+     "e": 2.224
+    },
+    {
+     "w": "o",
+     "s": 2.224,
+     "e": 2.287
+    },
+    {
+     "w": "público",
+     "s": 2.287,
+     "e": 2.73
+    },
+    {
+     "w": "entrar",
+     "s": 2.73,
+     "e": 3.109
+    },
+    {
+     "w": "e",
+     "s": 3.109,
+     "e": 3.173
+    },
+    {
+     "w": "sair",
+     "s": 3.173,
+     "e": 3.426
+    },
+    {
+     "w": "em",
+     "s": 3.426,
+     "e": 3.552
+    },
+    {
+     "w": "poucos",
+     "s": 3.552,
+     "e": 3.931
+    },
+    {
+     "w": "minutos.",
+     "s": 3.931,
+     "e": 4.564
+    }
+   ]
+  },
+  {
+   "id": "inauguracao",
+   "title": "ANO 80",
+   "sub": "TITO INAUGURA A ARENA",
+   "text": "No ano oitenta, Tito, filho de Vespasiano, inaugura a arena com cem dias de festa.",
+   "audio": "audio/n05_t.wav",
+   "from": 774,
+   "frames": 160,
+   "words": [
+    {
+     "w": "No",
+     "s": 0.2,
+     "e": 0.327
+    },
+    {
+     "w": "ano",
+     "s": 0.327,
+     "e": 0.518
+    },
+    {
+     "w": "oitenta,",
+     "s": 0.518,
+     "e": 1.154
+    },
+    {
+     "w": "Tito,",
+     "s": 1.154,
+     "e": 1.6
+    },
+    {
+     "w": "filho",
+     "s": 1.6,
+     "e": 1.918
+    },
+    {
+     "w": "de",
+     "s": 1.918,
+     "e": 2.045
+    },
+    {
+     "w": "Vespasiano,",
+     "s": 2.045,
+     "e": 2.872
+    },
+    {
+     "w": "inaugura",
+     "s": 2.872,
+     "e": 3.381
+    },
+    {
+     "w": "a",
+     "s": 3.381,
+     "e": 3.445
+    },
+    {
+     "w": "arena",
+     "s": 3.445,
+     "e": 3.763
+    },
+    {
+     "w": "com",
+     "s": 3.763,
+     "e": 3.954
+    },
+    {
+     "w": "cem",
+     "s": 3.954,
+     "e": 4.144
+    },
+    {
+     "w": "dias",
+     "s": 4.144,
+     "e": 4.399
+    },
+    {
+     "w": "de",
+     "s": 4.399,
+     "e": 4.526
+    },
+    {
+     "w": "festa.",
+     "s": 4.526,
+     "e": 5.035
+    }
+   ]
+  },
+  {
+   "id": "espetaculo",
+   "title": "ESPETÁCULO",
+   "sub": "GLADIADORES E FERAS",
+   "text": "Gladiadores, feras de terras distantes e, dizem, até batalhas navais.",
+   "audio": "audio/n06_t.wav",
+   "from": 934,
+   "frames": 143,
+   "words": [
+    {
+     "w": "Gladiadores,",
+     "s": 0.2,
+     "e": 1.081
+    },
+    {
+     "w": "feras",
+     "s": 1.081,
+     "e": 1.396
+    },
+    {
+     "w": "de",
+     "s": 1.396,
+     "e": 1.522
+    },
+    {
+     "w": "terras",
+     "s": 1.522,
+     "e": 1.9
+    },
+    {
+     "w": "distantes",
+     "s": 1.9,
+     "e": 2.466
+    },
+    {
+     "w": "e,",
+     "s": 2.466,
+     "e": 2.718
+    },
+    {
+     "w": "dizem,",
+     "s": 2.718,
+     "e": 3.222
+    },
+    {
+     "w": "até",
+     "s": 3.222,
+     "e": 3.411
+    },
+    {
+     "w": "batalhas",
+     "s": 3.411,
+     "e": 3.914
+    },
+    {
+     "w": "navais.",
+     "s": 3.914,
+     "e": 4.481
+    }
+   ]
+  },
+  {
+   "id": "subsolo",
+   "title": "POR BAIXO DA AREIA",
+   "sub": "TÚNEIS, JAULAS E ELEVADORES",
+   "text": "Sob o chão, túneis e elevadores levavam as feras direto para a arena.",
+   "audio": "audio/n07_t.wav",
+   "from": 1077,
+   "frames": 136,
+   "words": [
+    {
+     "w": "Sob",
+     "s": 0.2,
+     "e": 0.399
+    },
+    {
+     "w": "o",
+     "s": 0.399,
+     "e": 0.465
+    },
+    {
+     "w": "chão,",
+     "s": 0.465,
+     "e": 0.93
+    },
+    {
+     "w": "túneis",
+     "s": 0.93,
+     "e": 1.327
+    },
+    {
+     "w": "e",
+     "s": 1.327,
+     "e": 1.394
+    },
+    {
+     "w": "elevadores",
+     "s": 1.394,
+     "e": 2.057
+    },
+    {
+     "w": "levavam",
+     "s": 2.057,
+     "e": 2.521
+    },
+    {
+     "w": "as",
+     "s": 2.521,
+     "e": 2.654
+    },
+    {
+     "w": "feras",
+     "s": 2.654,
+     "e": 2.986
+    },
+    {
+     "w": "direto",
+     "s": 2.986,
+     "e": 3.384
+    },
+    {
+     "w": "para",
+     "s": 3.384,
+     "e": 3.649
+    },
+    {
+     "w": "a",
+     "s": 3.649,
+     "e": 3.715
+    },
+    {
+     "w": "arena.",
+     "s": 3.715,
+     "e": 4.246
+    }
+   ]
+  },
+  {
+   "id": "toldo",
+   "title": "O TOLDO",
+   "sub": "MANOBRADO POR MARINHEIROS",
+   "text": "Um enorme toldo, manobrado por marinheiros, protegia o público do sol.",
+   "audio": "audio/n08_t.wav",
+   "from": 1213,
+   "frames": 143,
+   "words": [
+    {
+     "w": "Um",
+     "s": 0.2,
+     "e": 0.329
+    },
+    {
+     "w": "enorme",
+     "s": 0.329,
+     "e": 0.717
+    },
+    {
+     "w": "toldo,",
+     "s": 0.717,
+     "e": 1.234
+    },
+    {
+     "w": "manobrado",
+     "s": 1.234,
+     "e": 1.816
+    },
+    {
+     "w": "por",
+     "s": 1.816,
+     "e": 2.01
+    },
+    {
+     "w": "marinheiros,",
+     "s": 2.01,
+     "e": 2.915
+    },
+    {
+     "w": "protegia",
+     "s": 2.915,
+     "e": 3.432
+    },
+    {
+     "w": "o",
+     "s": 3.432,
+     "e": 3.497
+    },
+    {
+     "w": "público",
+     "s": 3.497,
+     "e": 3.949
+    },
+    {
+     "w": "do",
+     "s": 3.949,
+     "e": 4.078
+    },
+    {
+     "w": "sol.",
+     "s": 4.078,
+     "e": 4.466
+    }
+   ]
+  },
+  {
+   "id": "queda",
+   "title": "O FIM DOS JOGOS",
+   "sub": "TERREMOTOS E SAQUES",
+   "text": "Os jogos acabaram. Terremotos derrubaram parte das paredes, e a pedra virou material de construção.",
+   "audio": "audio/n09_t.wav",
+   "from": 1356,
+   "frames": 197,
+   "words": [
+    {
+     "w": "Os",
+     "s": 0.2,
+     "e": 0.333
+    },
+    {
+     "w": "jogos",
+     "s": 0.333,
+     "e": 0.666
+    },
+    {
+     "w": "acabaram.",
+     "s": 0.666,
+     "e": 1.398
+    },
+    {
+     "w": "Terremotos",
+     "s": 1.398,
+     "e": 2.064
+    },
+    {
+     "w": "derrubaram",
+     "s": 2.064,
+     "e": 2.729
+    },
+    {
+     "w": "parte",
+     "s": 2.729,
+     "e": 3.062
+    },
+    {
+     "w": "das",
+     "s": 3.062,
+     "e": 3.262
+    },
+    {
+     "w": "paredes,",
+     "s": 3.262,
+     "e": 3.927
+    },
+    {
+     "w": "e",
+     "s": 3.927,
+     "e": 3.994
+    },
+    {
+     "w": "a",
+     "s": 3.994,
+     "e": 4.061
+    },
+    {
+     "w": "pedra",
+     "s": 4.061,
+     "e": 4.393
+    },
+    {
+     "w": "virou",
+     "s": 4.393,
+     "e": 4.726
+    },
+    {
+     "w": "material",
+     "s": 4.726,
+     "e": 5.259
+    },
+    {
+     "w": "de",
+     "s": 5.259,
+     "e": 5.392
+    },
+    {
+     "w": "construção.",
+     "s": 5.392,
+     "e": 6.257
+    }
+   ]
+  },
+  {
+   "id": "hoje",
+   "title": "HOJE",
+   "sub": "SÍMBOLO DE ROMA",
+   "text": "Quase dois mil anos depois, o Coliseu continua de pé, e recebe milhões de visitantes por ano.",
+   "audio": "audio/n10_t.wav",
+   "from": 1553,
+   "frames": 184,
+   "words": [
+    {
+     "w": "Quase",
+     "s": 0.2,
+     "e": 0.539
+    },
+    {
+     "w": "dois",
+     "s": 0.539,
+     "e": 0.811
+    },
+    {
+     "w": "mil",
+     "s": 0.811,
+     "e": 1.015
+    },
+    {
+     "w": "anos",
+     "s": 1.015,
+     "e": 1.286
+    },
+    {
+     "w": "depois,",
+     "s": 1.286,
+     "e": 1.897
+    },
+    {
+     "w": "o",
+     "s": 1.897,
+     "e": 1.965
+    },
+    {
+     "w": "Coliseu",
+     "s": 1.965,
+     "e": 2.44
+    },
+    {
+     "w": "continua",
+     "s": 2.44,
+     "e": 2.983
+    },
+    {
+     "w": "de",
+     "s": 2.983,
+     "e": 3.119
+    },
+    {
+     "w": "pé,",
+     "s": 3.119,
+     "e": 3.459
+    },
+    {
+     "w": "e",
+     "s": 3.459,
+     "e": 3.527
+    },
+    {
+     "w": "recebe",
+     "s": 3.527,
+     "e": 3.934
+    },
+    {
+     "w": "milhões",
+     "s": 3.934,
+     "e": 4.409
+    },
+    {
+     "w": "de",
+     "s": 4.409,
+     "e": 4.545
+    },
+    {
+     "w": "visitantes",
+     "s": 4.545,
+     "e": 5.224
+    },
+    {
+     "w": "por",
+     "s": 5.224,
+     "e": 5.427
+    },
+    {
+     "w": "ano.",
+     "s": 5.427,
+     "e": 5.835
+    }
+   ]
+  }
+ ]
+}
