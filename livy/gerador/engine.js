@@ -28,10 +28,10 @@ function symPath(start, segs) {
 
 // ---------------------------------------------------------------- rostos
 const FACES = {
-  child: symPath([256, 124], [
-    ['C', 196, 124, 146, 160, 143, 232],
-    ['C', 141, 330, 176, 440, 214, 458],
-    ['C', 232, 466, 244, 467, 256, 467]]),
+  child: symPath([256, 118], [
+    ['C', 182, 118, 126, 164, 124, 248],
+    ['C', 123, 352, 166, 452, 224, 462],
+    ['C', 238, 465, 247, 466, 256, 466]]),
   adult: symPath([256, 116], [
     ['C', 196, 116, 152, 150, 150, 222],
     ['C', 148, 330, 176, 440, 222, 478],
@@ -43,7 +43,7 @@ const FACES = {
 };
 const PROFILES = {
   //        olhos: rx ry  centro-y  dx   boca-y  nariz-y  pescoço  ombro-x
-  child:  { rx: 34, ry: 38, ey: 336, dx: 60, my: 419, ny: 389, neck: 44, xl: 52, mscale: 1.0, ear: false, dy: 34 },
+  child:  { rx: 34, ry: 38, ey: 338, dx: 63, my: 419, ny: 389, neck: 44, xl: 52, mscale: 1.0, ear: false, dy: 34 },
   adult:  { rx: 25, ry: 27, ey: 332, dx: 58, my: 418, ny: 388, neck: 50, xl: 34, mscale: 0.92, ear: true, dy: 26 },
   elder:  { rx: 21, ry: 23, ey: 334, dx: 56, my: 420, ny: 390, neck: 50, xl: 40, mscale: 0.9, ear: true, dy: 26 },
   square: { rx: 24, ry: 26, ey: 332, dx: 60, my: 424, ny: 392, neck: 62, xl: 10, mscale: 1.0, ear: true, dy: 22 },
