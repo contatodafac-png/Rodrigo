@@ -42,7 +42,7 @@ Curiosa demais, observadora, teimosa, honesta (não sabe mentir), exagera um pou
 | `vizinho` | Seu Jorge, 45 | resmungão só na aparência | resmungado |
 | `seguranca` | Seu Tião, 50 | leva o trabalho a sério demais | formal e firme |
 
-Cada um tem as 5 expressões em `avatares/2-elenco/expressoes/`. Nomes e idades são sugestões: dá para trocar sem mexer no desenho. A mãe, a Livy e a irmã compartilham os olhos âmbar (traço de família).
+Cada um tem as 5 expressões em `avatares/2-elenco/expressoes/`. Todos são desenhados a partir do mesmo rosto da Livy (mesmos olhos, traço e blush), com cor de pele, cabelo e olhos próprios, cabelo mais curto ou mais longo e acessórios (óculos, barba, boné, coque, rabo de cavalo). Nomes e idades são sugestões: dá para trocar sem mexer no desenho. A mãe, a Livy e a irmã compartilham os olhos âmbar (traço de família).
 
 ## 6. Prompt-mestre (para gerar imagens/vídeo mantendo o personagem)
 > Livy, 10-year-old girl, 2D anime style, thin black outlines, flat cel shading, large amber-orange gradient eyes with two white highlights, light pink hatched blush, tiny dot nose, wide friendly smile, short silver-white layered bob with long pointed bangs and glossy white hair highlights, dark-purple hoodie with white drawstrings, cream headphones with mint-green accents resting on her shoulders, front-facing bust, transparent background.
@@ -51,11 +51,11 @@ Cada um tem as 5 expressões em `avatares/2-elenco/expressoes/`. Nomes e idades 
 1. Nunca mudar cabelo prateado, moletom roxo ou fone, nem o formato dos olhos.
 2. Contorno sempre preto e grosso; sombras chapadas, sem degradê (exceto a íris).
 3. Reaproveitar os arquivos em `avatares/`: PNG 1024×1280 com fundo transparente para editar no CapCut/Premiere, SVG para qualquer tamanho.
-4. Novos personagens: criar no gerador (`gerador/personagens.js`), que já aplica o mesmo rosto, olhos, blush e contorno.
+4. Novos personagens: adicionar uma receita em `gerador/variantes.py` (cores e corte de cabelo) e em `gerador/ref_cast.js` (acessórios e roupa); todos partem do mesmo rosto da Livy.
 
 ## Arquivos
 - `folhas/01-ficha-livy.png`, `02-livy-expressoes.png`, `03-elenco.png`: folhas de apresentação.
-- `gerador/`: código que gera tudo (`cd gerador && node build_all.js`; precisa de Node e Playwright).
+- `gerador/`: código que gera tudo. Ordem: `python3 gerador/recorte_ref.py <referência> base/livy-base-recorte.png`, `python3 gerador/variantes.py`, `node gerador/build_all.js` (precisa de Node, Playwright, Python com Pillow, NumPy e SciPy).
 
 ## Aviso sobre a imagem de referência
 A imagem de referência vem de um banco de imagens e traz a marca d'água "pngtree", que continua visível nos arquivos da Livy. Para uso em publicações, use a versão licenciada (sem marca d'água): coloque o arquivo e rode `python3 gerador/recorte_ref.py <imagem> base/livy-base-recorte.png` e depois `node gerador/build_all.js`.

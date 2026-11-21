@@ -6,6 +6,7 @@ const { chromium } = require('playwright');
 const { avatar } = require('./engine');
 const { chars } = require('./personagens');
 const { avatarLivy } = require('./livy_ref');
+const { avatarCast } = require('./ref_cast');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT = path.join(ROOT, 'avatares');
@@ -44,7 +45,7 @@ const LABELS = {
   bravo: ['Bravo', 'quando ninguém acredita nela'],
 };
 
-const svgOf = (k, e, uid) => (k === 'livy' ? avatarLivy(e, uid) : avatar(chars[k], e, uid));
+const svgOf = (k, e, uid) => (k === 'livy' ? avatarLivy(e, uid) : avatarCast(k, e, uid));
 const inline = (k, e, uid, w) => svgOf(k, e, uid).replace('width="512" height="640"', `width="${w}" height="${Math.round(w * 1.25)}"`);
 
 const css = `
