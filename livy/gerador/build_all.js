@@ -5,6 +5,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 const { avatar } = require('./engine');
 const { chars } = require('./personagens');
+const { avatarLivy } = require('./livy_ref');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT = path.join(ROOT, 'avatares');
@@ -43,7 +44,7 @@ const LABELS = {
   bravo: ['Bravo', 'quando ninguém acredita nela'],
 };
 
-const svgOf = (k, e, uid) => avatar(chars[k], e, uid);
+const svgOf = (k, e, uid) => (k === 'livy' ? avatarLivy(e, uid) : avatar(chars[k], e, uid));
 const inline = (k, e, uid, w) => svgOf(k, e, uid).replace('width="512" height="640"', `width="${w}" height="${Math.round(w * 1.25)}"`);
 
 const css = `
@@ -77,7 +78,7 @@ ul{margin:0;padding-left:22px;font-size:19px;line-height:1.5}li{margin-bottom:4p
   };
 
   // 1) Livy: 5 expressões pedidas + 2 de apoio
-  for (const e of [...MAIN5, 'sorriso', 'neutro']) await save('livy', e, path.join(OUT, '1-livy'), `livy-${e}`);
+  for (const e of MAIN5) await save('livy', e, path.join(OUT, '1-livy'), `livy-${e}`);
   // 2) Elenco: avatar padrão + 5 expressões de cada
   for (const c of ELENCO) {
     await save(c.k, c.padrao, path.join(OUT, '2-elenco'), `${c.k}`);
@@ -92,8 +93,8 @@ ul{margin:0;padding-left:22px;font-size:19px;line-height:1.5}li{margin-bottom:4p
   };
 
   const palette = [
-    ['Cabelo prata', '#E4E4E9'], ['Sombra cabelo', '#B4B4C0'], ['Roxo moletom', '#3A2578'], ['Roxo escuro', '#24124F'],
-    ['Verde-menta', '#3DE0C2'], ['Creme (fone)', '#F4EEE2'], ['Âmbar (olhos)', '#FF9B1D'], ['Pele', '#FBDCB4'],
+    ['Cabelo prata', '#E9E9E9'], ['Sombra cabelo', '#C4C4C4'], ['Roxo moletom', '#3A2578'], ['Roxo escuro', '#24124F'],
+    ['Verde-menta', '#3DE0C2'], ['Creme (fone)', '#F4EEE2'], ['Âmbar (olhos)', '#FF9B1D'], ['Pele', '#FFDEB8'],
     ['Blush', '#EE8B8B'], ['Contorno', '#15101D'],
   ];
   const sw = palette.map(([n, h]) => `<div><i style="background:${h}"></i>${n}<br><span style="font-weight:500;color:#6b5a93">${h}</span></div>`).join('');
@@ -108,7 +109,7 @@ ul{margin:0;padding-left:22px;font-size:19px;line-height:1.5}li{margin-bottom:4p
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-content:start">
         <div class="card"><h3>Quem é</h3><div style="font-size:20px;line-height:1.5"><b>Livy</b>, 10 anos, 5º ano. Curiosa, esperta demais para a idade e incapaz de deixar um mistério sem resolver. Conta as histórias da família olhando direto para a câmera, como quem fala com a melhor amiga.</div></div>
         <div class="card"><h3>Marcas fixas (nunca mudam)</h3><ul>
-          <li>Chanel curto <b>prateado</b>, franja repicada e pontas abertas</li>
+          <li>Rosto e cabelo <b>idênticos à referência</b>: chanel curto prateado, franja longa</li>
           <li><b>Fone de ouvido</b> creme com detalhe verde-menta, apoiado nos ombros</li>
           <li><b>Moletom roxo escuro</b> com cordões brancos</li>
           <li>Olhos grandes âmbar, blush em traços, nariz de ponto</li></ul></div>
@@ -137,7 +138,7 @@ ul{margin:0;padding-left:22px;font-size:19px;line-height:1.5}li{margin-bottom:4p
       <div style="font-size:16.5px;line-height:1.4;margin-bottom:8px">${c.quem}</div>
       <div style="font-size:15.5px;line-height:1.4;color:#3a2380;font-style:italic">${c.voz}</div></div></div>`;
   const livyCard = `<div class="card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;background:#3a2380;color:#fff">
-      <div style="background:radial-gradient(circle at 50% 40%,#fff 0,#d8c7f7 78%);display:flex;justify-content:center;padding-top:14px">${inline('livy', 'sorriso', 'cl', 300)}</div>
+      <div style="background:radial-gradient(circle at 50% 40%,#fff 0,#d8c7f7 78%);display:flex;justify-content:center;padding-top:14px">${inline('livy', 'feliz', 'cl', 300)}</div>
       <div style="padding:16px 22px 22px"><div style="font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#3de0c2;font-weight:800">Protagonista · 10 anos</div>
       <div style="font-size:30px;font-weight:800;margin:2px 0 8px">Livy</div>
       <div style="font-size:16.5px;line-height:1.4">Mesma linha, mesmos olhos, mesmo blush: o elenco inteiro é desenhado com as regras dela.</div></div></div>`;

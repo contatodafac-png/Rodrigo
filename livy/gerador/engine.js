@@ -199,16 +199,16 @@ function symbols(kind, uid) {
 }
 
 // ---------------------------------------------------------------- montagem
-function bodyShape(ctx, { fill, nw = 54, nl = 26, shade = true, extra = '' }) {
+function bodyShape(ctx, { fill, nw = 54, nl = 26, shade = true, extra = '', sw = 5 }) {
   const p = ctx.p, xl = p.xl;
   const Lx = 256 - nw, Rx = 256 + nw;
   const d = `M${Lx} 520 C${Lx - 52} 526 ${xl + 40} 548 ${xl + 8} 600 L${xl} 640 L${512 - xl} 640 L${512 - xl - 8} 600 C${512 - xl - 40} 548 ${Rx + 52} 526 ${Rx} 520 C${Rx - 12} ${520 + nl} ${Lx + 12} ${520 + nl} ${Lx} 520Z`;
   const id = `${ctx.uid}bd`;
   let s = `<clipPath id="${id}"><path d="${d}"/></clipPath>`;
-  s += P(d, fill, 5);
+  s += P(d, fill, sw);
   if (shade) s += `<g clip-path="url(#${id})"><path d="M340 500 L520 500 L520 640 L330 640 Q350 560 340 500Z" fill="#000" opacity="0.16"/></g>`;
   s += extra;
-  s += P(d, 'none', 5);
+  s += P(d, 'none', sw);
   return s;
 }
 
@@ -281,4 +281,4 @@ function avatar(c, exprName = 'feliz', uid = 'a') {
   return s + '</g></svg>';
 }
 
-module.exports = { avatar, INK, P, L, mirror, symPath, bodyShape, PROFILES, EXPR, n1 };
+module.exports = { avatar, INK, P, L, mirror, symPath, bodyShape, symbols, PROFILES, EXPR, n1 };
