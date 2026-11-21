@@ -1,4 +1,5 @@
 import React from "react";
+import { staticFile } from "remotion";
 
 // ---------- paleta (flat, quente, estilo documentário) ----------
 export const C = {
@@ -402,3 +403,52 @@ export const Vignette: React.FC = () => (
     <rect y="1250" width="1080" height="670" fill="url(#botg)" />
   </svg>
 );
+
+// ---------- personagens (PNG recortados) ----------
+export const SIZES: Record<string, [number, number]> = {
+  vespasiano_full: [484, 1100],
+  vespasiano_meio: [454, 740],
+  tito: [440, 712],
+  gladiador_vermelho: [387, 724],
+  gladiador_azul: [391, 730],
+  trabalhador: [316, 698],
+  leao: [993, 665],
+  turista: [449, 681],
+  marinheiro: [257, 679],
+  cidadao_homem: [228, 695],
+  cidadao_mulher: [211, 657],
+  cidadao_crianca: [136, 404],
+  cidadao_senador: [283, 689],
+};
+
+// x = centro, y = pés, h = altura em px
+export const Sprite: React.FC<{
+  name: keyof typeof SIZES;
+  x: number;
+  y: number;
+  h: number;
+  flip?: boolean;
+  rot?: number;
+  hue?: number;
+  bob?: number;
+  shadow?: boolean;
+}> = ({ name, x, y, h, flip, rot = 0, hue = 0, bob = 0, shadow = true }) => {
+  const [iw, ih] = SIZES[name];
+  const w = (iw / ih) * h;
+  return (
+    <g transform={`translate(${x} ${y + bob}) rotate(${rot})`}>
+      {shadow ? <ellipse cx="0" cy="0" rx={w * 0.42} ry={h * 0.03} fill="#1a0f08" opacity="0.28" transform={`translate(0 ${-bob})`} /> : null}
+      <g transform={`scale(${flip ? -1 : 1} 1)`}>
+        <image
+          href={staticFile(`personagens/${name}.png`)}
+          x={-w / 2}
+          y={-h}
+          width={w}
+          height={h}
+          preserveAspectRatio="xMidYMid meet"
+          style={hue ? { filter: `hue-rotate(${hue}deg)` } : undefined}
+        />
+      </g>
+    </g>
+  );
+};

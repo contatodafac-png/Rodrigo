@@ -1,6 +1,6 @@
 import React from "react";
 import { interpolate, Easing } from "remotion";
-import { Bust, C, Colosseum, Crowd, Ground, Lion, Person, Sky, Wall } from "./art";
+import { C, Colosseum, Crowd, Ground, Sky, Sprite, Wall } from "./art";
 
 export type SceneProps = { f: number; n: number };
 
@@ -30,9 +30,10 @@ export const Abertura: React.FC<SceneProps> = ({ f }) => {
       <Pine x={90} y={1420} s={1.15} />
       <Pine x={990} y={1400} s={0.95} />
       <rect x="-200" y="1330" width="1480" height="40" fill={C.sandDark} opacity="0.5" />
-      {[0, 1, 2, 3].map((i) => (
-        <Person key={i} x={200 + i * 210 + Math.sin((f + i * 9) * 0.1) * 6} y={1560 + (i % 2) * 40} s={0.9} tunic={[C.terra, C.white, C.blue, C.gold][i]} bob={Math.sin((f + i * 5) * 0.3) * 2} />
-      ))}
+      <Sprite name="cidadao_homem" x={150} y={1660} h={340} bob={Math.sin(f * 0.12) * 3} />
+      <Sprite name="cidadao_mulher" x={300} y={1690} h={350} bob={Math.sin(f * 0.12 + 1) * 3} />
+      <Sprite name="cidadao_crianca" x={420} y={1700} h={230} bob={Math.sin(f * 0.16 + 2) * 4} />
+      <Sprite name="vespasiano_full" x={790} y={1740} h={900} bob={Math.sin(f * 0.07) * 3} />
     </g>
   );
 };
@@ -65,17 +66,8 @@ export const Vespasiano: React.FC<SceneProps> = ({ f }) => {
           ))}
         </g>
       ))}
-      <g transform={`translate(${(1 - p) * -80} 0)`} opacity={p}>
-        <Bust x={540} y={1560} s={1.18} age="old" hair="#8a7f78" robe="#efe5cf" cloak={C.terraDark} />
-      </g>
-      {/* planta do Coliseu no papiro */}
-      <g transform={`translate(${760 + (1 - p) * 120} ${1180}) rotate(-8)`} opacity={p}>
-        <rect x="0" y="0" width="260" height="190" rx="10" fill="#efdcae" stroke={C.stoneDark} strokeWidth="6" />
-        <ellipse cx="130" cy="95" rx="96" ry="60" fill="none" stroke={C.terraDark} strokeWidth="6" />
-        <ellipse cx="130" cy="95" rx="60" ry="34" fill="none" stroke={C.terraDark} strokeWidth="5" />
-        <ellipse cx="130" cy="95" rx="30" ry="14" fill={C.sand} />
-        <rect x="-8" y="-6" width="14" height="202" rx="7" fill={C.goldDark} />
-        <rect x="254" y="-6" width="14" height="202" rx="7" fill={C.goldDark} />
+      <g transform={`translate(${(1 - p) * -120} 0)`} opacity={p}>
+        <Sprite name="vespasiano_meio" x={540} y={1950} h={1250} shadow={false} bob={Math.sin(f * 0.06) * 3} />
       </g>
     </g>
   );
@@ -110,7 +102,7 @@ export const Obra: React.FC<SceneProps> = ({ f, n }) => {
       {/* trabalhadores carregando blocos */}
       {[0, 1, 2, 3, 4].map((i) => {
         const x = ((f * (1.4 + i * 0.25) + i * 230) % 1300) - 140;
-        return <Person key={i} x={x} y={1480 + (i % 3) * 52} s={0.82} tunic={i % 2 ? "#cdb98c" : "#a56b4a"} carry bob={Math.sin((f + i * 7) * 0.4) * 3} />;
+        return <Sprite key={i} name="trabalhador" x={x} y={1500 + (i % 3) * 60} h={300 + (i % 3) * 30} hue={(i - 2) * 8} bob={Math.abs(Math.sin((f + i * 7) * 0.25)) * -10} />;
       })}
       {/* pilha de blocos */}
       {[0, 1, 2].map((i) => (
@@ -146,8 +138,8 @@ export const Gigante: React.FC<SceneProps> = ({ f }) => {
         <line x1="100" y1="1404" x2="100" y2="1436" />
         <line x1={100 + 880 * k} y1="1404" x2={100 + 880 * k} y2="1436" />
       </g>
-      <Person x={1010} y={1500} s={0.8} tunic={C.terra} />
-      <Person x={960} y={1520} s={0.8} tunic={C.blue} />
+      <Sprite name="cidadao_homem" x={1000} y={1560} h={210} />
+      <Sprite name="cidadao_mulher" x={920} y={1580} h={205} />
       {/* contador */}
       <g transform="translate(540 1130)" opacity={prog(f, 36, 60)}>
         <rect x="-300" y="-90" width="600" height="150" rx="28" fill={C.ink} opacity="0.78" />
@@ -174,7 +166,10 @@ export const Portoes: React.FC<SceneProps> = ({ f }) => {
         {Array.from({ length: 16 }).map((_, i) => {
           const speed = 1.2 + (i % 4) * 0.35;
           const x = ((f * speed + i * 200) % 2300) - 380;
-          return <Person key={i} x={x} y={1520 + (i % 3) * 46} s={0.9} tunic={[C.terra, C.white, C.blue, C.gold, C.purple][i % 5]} bob={Math.sin((f + i * 6) * 0.35) * 3} />;
+          const kinds = ["cidadao_homem", "cidadao_mulher", "cidadao_crianca", "cidadao_senador", "trabalhador"] as const;
+          const hs = [340, 335, 235, 360, 320];
+          const k = i % 5;
+          return <Sprite key={i} name={kinds[k]} x={x} y={1540 + (i % 3) * 50} h={hs[k]} hue={((i * 7) % 5) - 2} bob={Math.abs(Math.sin((f + i * 6) * 0.22)) * -9} />;
         })}
       </g>
     </g>
@@ -200,7 +195,7 @@ export const Inauguracao: React.FC<SceneProps> = ({ f }) => {
         return <polygon key={i} points={`${x - 28},${y} ${x + 28},${y} ${x},${y + 66}`} fill={colors[i % 5]} />;
       })}
       <g transform={`translate(0 ${(1 - p) * 120})`} opacity={p}>
-        <Bust x={540} y={1580} s={1.16} age="young" hair="#4a3326" cloak={C.terraDark} />
+        <Sprite name="tito" x={470} y={1840} h={1230} bob={Math.sin(f * 0.08) * 4} />
       </g>
       {/* confete */}
       {Array.from({ length: 46 }).map((_, i) => {
@@ -245,9 +240,9 @@ export const Espetaculo: React.FC<SceneProps> = ({ f }) => {
       <rect x="-200" y="1140" width="1480" height="900" fill={C.sand} />
       <ellipse cx="540" cy="1400" rx="620" ry="120" fill={C.sandDark} opacity="0.4" />
       {/* gladiadores */}
-      <Person x={340 + clash * 10} y={1400} s={1.5} tunic={C.terra} helmet shield sword bob={Math.abs(clash) * -6} />
-      <Person x={560 - clash * 10} y={1420} s={1.5} tunic={C.blue} helmet shield sword flip bob={Math.abs(clash) * -6} />
-      <Lion x={lionX} y={1340} s={1.1} flip />
+      <Sprite name="gladiador_vermelho" x={290 + clash * 12} y={1450} h={640} rot={4} bob={Math.abs(clash) * -8} />
+      <Sprite name="gladiador_azul" x={600 - clash * 12} y={1470} h={640} rot={-4} bob={Math.abs(clash) * -8} />
+      <Sprite name="leao" x={lionX + 90} y={1400} h={320} />
     </g>
   );
 };
@@ -285,12 +280,12 @@ export const Subsolo: React.FC<SceneProps> = ({ f }) => {
         {[0, 1, 2, 3].map((i) => (
           <line key={i} x1={100 + i * 62} y1="800" x2={100 + i * 62} y2="970" stroke="#7b4f2d" strokeWidth="8" />
         ))}
-        <Lion x={240} y={960} s={0.68} />
+        <Sprite name="leao" x={195} y={965} h={140} shadow={false} />
         <rect x="760" y="1130" width="270" height="170" fill="none" stroke="#7b4f2d" strokeWidth="10" />
         {[0, 1, 2, 3].map((i) => (
           <line key={i} x1={800 + i * 62} y1="1130" x2={800 + i * 62} y2="1300" stroke="#7b4f2d" strokeWidth="8" />
         ))}
-        <Lion x={900} y={1290} s={0.68} flip />
+        <Sprite name="leao" x={895} y={1295} h={140} flip shadow={false} />
       </g>
       {/* elevador */}
       <g>
@@ -300,17 +295,17 @@ export const Subsolo: React.FC<SceneProps> = ({ f }) => {
         <line x1="642" y1="610" x2="642" y2={platY} stroke="#d1b57a" strokeWidth="5" />
         <rect x="420" y={platY} width="240" height="24" fill="#9a6a3c" />
         <rect x="440" y={platY - 110} width="200" height="110" fill="none" stroke="#7b4f2d" strokeWidth="8" />
-        <Lion x={565} y={platY} s={0.56} flip />
+        <Sprite name="leao" x={565} y={platY} h={105} flip shadow={false} />
       </g>
       {flame(380, 1060, 0)}
       {flame(700, 1060, 1)}
       {flame(380, 730, 2)}
       {flame(700, 730, 3)}
-      {/* operários no cabrestante */}
+      {/* operários */}
       {[0, 1, 2].map((i) => (
-        <Person key={i} x={120 + i * 90} y={1560} s={0.9} tunic="#a56b4a" carry bob={Math.sin(f * 0.3 + i) * 3} />
+        <Sprite key={i} name={i === 1 ? "trabalhador" : "cidadao_homem"} x={110 + i * 110} y={1590} h={250} hue={i * 6} bob={Math.sin(f * 0.3 + i) * 3} />
       ))}
-      <Person x={900} y={1560} s={0.9} tunic="#cdb98c" bob={Math.sin(f * 0.3) * 3} />
+      <Sprite name="cidadao_senador" x={910} y={1590} h={270} bob={Math.sin(f * 0.3) * 3} />
     </g>
   );
 };
@@ -333,7 +328,7 @@ export const Toldo: React.FC<SceneProps> = ({ f }) => {
       <ellipse cx="540" cy={1380 - 1000 * 0.2 * 3 - 1000 * 0.15 - 250 + sag} rx="180" ry="22" fill="#2a1b14" opacity="0.25" />
       {/* marinheiros no topo */}
       {Array.from({ length: 8 }).map((_, i) => (
-        <Person key={i} x={110 + i * 120} y={1380 - 1000 * 0.2 * 3 - 1000 * 0.15 + 8} s={0.42} tunic={i % 2 ? C.blue : C.white} bob={Math.sin(f * 0.3 + i) * 2} />
+        <Sprite key={i} name="marinheiro" x={110 + i * 120} y={1380 - 1000 * 0.2 * 3 - 1000 * 0.15 + 8} h={150} flip={i % 2 === 1} bob={Math.sin(f * 0.3 + i) * 2} shadow={false} />
       ))}
       {/* sombra projetada na plateia */}
       <rect x="40" y="1380" width="1000" height="40" fill="#1a0f08" opacity="0.15" />
@@ -367,7 +362,7 @@ export const Queda: React.FC<SceneProps> = ({ f }) => {
         const x = ((f * (1.6 + i * 0.3) + i * 380) % 1400) - 200;
         return (
           <g key={i}>
-            <Person x={x} y={1560 + i * 40} s={0.85} tunic="#7e5a3a" carry bob={Math.sin((f + i * 6) * 0.4) * 3} />
+            <Sprite name="trabalhador" x={x} y={1580 + i * 40} h={300} hue={i * 8} bob={Math.abs(Math.sin((f + i * 6) * 0.25)) * -10} />
           </g>
         );
       })}
@@ -388,14 +383,9 @@ export const Hoje: React.FC<SceneProps> = ({ f }) => {
         <path key={i} d="M0 0 Q14 -14 28 0 Q42 -14 56 0" stroke={C.ink} strokeWidth="4" fill="none" transform={`translate(${(f * (2 + i * 0.4) + i * 300) % 1300 - 100} ${480 + i * 70 + Math.sin(f * 0.1 + i) * 10})`} />
       ))}
       {/* turistas */}
-      {Array.from({ length: 9 }).map((_, i) => (
-        <Person key={i} x={80 + i * 115 + Math.sin((f + i * 11) * 0.05) * 14} y={1600 + (i % 3) * 44} s={0.95} tunic={["#e0524a", "#3ea0d6", "#f2c744", "#5fb87a", "#c870d9"][i % 5]} skin={i % 2 ? C.skinDark : C.skin} hair={i % 3 ? C.hair : "#8a5a2a"} bob={Math.sin((f + i * 5) * 0.2) * 2} />
+      {Array.from({ length: 6 }).map((_, i) => (
+        <Sprite key={i} name="turista" x={110 + i * 170 + Math.sin((f + i * 11) * 0.05) * 12} y={1640 + (i % 3) * 46} h={330 + (i % 3) * 25} flip={i % 2 === 1} bob={Math.abs(Math.sin((f + i * 5) * 0.1)) * -5} />
       ))}
-      {/* guia com bandeira */}
-      <g>
-        <rect x="948" y="1330" width="8" height="250" fill="#5b3b27" />
-        <polygon points="956,1330 1040,1356 956,1384" fill={C.terra} />
-      </g>
     </g>
   );
 };

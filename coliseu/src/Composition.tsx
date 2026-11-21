@@ -3,7 +3,7 @@ import { AbsoluteFill, Sequence, interpolate, staticFile, useCurrentFrame, useDe
 import { Audio } from "@remotion/media";
 import timeline from "./timeline.json";
 import { SCENES } from "./scenes";
-import { C, Vignette } from "./art";
+import { C, Vignette, SIZES } from "./art";
 
 type Word = { w: string; s: number; e: number };
 type SceneData = { id: string; title: string; sub: string; audio: string; from: number; frames: number; words: Word[] };
@@ -18,13 +18,21 @@ const useFonts = () => {
       ["Fira Sans Condensed", "fonts/fira-sans-condensed-latin-700-normal.woff2", "700"],
       ["Fira Sans Condensed", "fonts/fira-sans-condensed-latin-600-normal.woff2", "600"],
     ];
-    Promise.all(
-      defs.map(async ([family, file, weight]) => {
-        const ff = new FontFace(family, `url(${staticFile(file)})`, { weight });
-        await ff.load();
-        document.fonts.add(ff);
-      }),
-    ).then(() => continueRender(handle));
+    const fonts = defs.map(async ([family, file, weight]) => {
+      const ff = new FontFace(family, `url(${staticFile(file)})`, { weight });
+      await ff.load();
+      document.fonts.add(ff);
+    });
+    const imgs = Object.keys(SIZES).map(
+      (n) =>
+        new Promise<void>((res) => {
+          const im = new Image();
+          im.onload = () => im.decode().then(() => res(), () => res());
+          im.onerror = () => res();
+          im.src = staticFile(`personagens/${n}.png`);
+        }),
+    );
+    Promise.all([...fonts, ...imgs]).then(() => continueRender(handle));
   }, [handle, continueRender]);
 };
 
