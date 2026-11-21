@@ -32,6 +32,10 @@ const FACES = {
     ['C', 182, 118, 126, 164, 124, 248],
     ['C', 123, 352, 166, 452, 224, 462],
     ['C', 238, 465, 247, 466, 256, 466]]),
+  anime: symPath([256, 190], [
+    ['C', 176, 190, 118, 236, 117, 312],
+    ['C', 117, 392, 160, 470, 222, 498],
+    ['C', 238, 504, 247, 506, 256, 506]]),
   adult: symPath([256, 116], [
     ['C', 196, 116, 152, 150, 150, 222],
     ['C', 148, 330, 176, 440, 222, 478],
@@ -43,6 +47,7 @@ const FACES = {
 };
 const PROFILES = {
   //        olhos: rx ry  centro-y  dx   boca-y  nariz-y  pescoço  ombro-x
+  anime:  { rx: 42, ry: 34, irx: 28, iry: 33, ey: 322, dx: 96, my: 441, ny: 397, neck: 76, xl: 50, mscale: 1.12, ear: false, dy: 44, hs: 0.9, brx: 30, symScale: 1.08 },
   child:  { rx: 34, ry: 38, ey: 338, dx: 63, my: 419, ny: 389, neck: 44, xl: 52, mscale: 1.0, ear: false, dy: 34 },
   adult:  { rx: 25, ry: 27, ey: 332, dx: 58, my: 418, ny: 388, neck: 50, xl: 34, mscale: 0.92, ear: true, dy: 26 },
   elder:  { rx: 21, ry: 23, ey: 334, dx: 56, my: 420, ny: 390, neck: 50, xl: 40, mscale: 0.9, ear: true, dy: 26 },
@@ -54,7 +59,7 @@ function eyeSVG(uid, side, p, c, o) {
   const rx = p.rx, ry = p.ry * (o.ryScale || 1);
   const cut = o.cut ? [o.cut[0] * ry, o.cut[1] * ry] : null;
   const id = `${uid}${side}`;
-  const irx = rx * 0.82 * (o.iris || 1), iry = ry * 0.98 * (o.iris || 1);
+  const irx = (p.irx || rx * 0.82) * (o.iris || 1), iry = (p.iry ? p.iry * (o.ryScale || 1) : ry * 0.98) * (o.iris || 1);
   const ix = o.look ? o.look[0] : 0, iy = (o.look ? o.look[1] : 0) + 2;
   const pr = (o.pupil || 1);
   let s = `<clipPath id="${id}el"><ellipse cx="0" cy="0" rx="${rx}" ry="${ry}"/></clipPath>`;
@@ -209,7 +214,7 @@ function bodyShape(ctx, { fill, nw = 54, nl = 26, shade = true, extra = '' }) {
 
 function avatar(c, exprName = 'feliz', uid = 'a') {
   const p = { ...PROFILES[c.profile], ...(c.pOver || {}) };
-  const E = EXPR[exprName](p);
+  const E = EXPR[exprName]({ ...p, rx: p.brx || p.rx });
   const exL = 256 - p.dx, exR = 256 + p.dx;
   const ctx = { uid, c, p, exL, exR, ey: p.ey, E };
   const faceD = FACES[c.profile === 'elder' ? 'adult' : c.profile];
@@ -223,7 +228,8 @@ function avatar(c, exprName = 'feliz', uid = 'a') {
   s += `<clipPath id="${uid}neck"><path d="${neckD}"/></clipPath></defs>`;
 
   const dy = p.dy;
-  const H0 = `<g transform="translate(0 ${dy})">`;
+  const hs = p.hs || 1;
+  const H0 = `<g transform="translate(${(256 * (1 - hs)).toFixed(1)} ${dy}) scale(${hs})">`;
   s += H0 + (parts.back || '');
   if (p.ear) {
     const ear = (x) => `<ellipse cx="${x}" cy="${p.ey + 4}" rx="16" ry="25" fill="${c.skin}" stroke="${INK}" stroke-width="4.5"/><path d="M${x + (x < 256 ? 3 : -3)} ${p.ey - 6} Q${x + (x < 256 ? -4 : 4)} ${p.ey + 4} ${x + (x < 256 ? 3 : -3)} ${p.ey + 16}" fill="none" stroke="${c.skinLine || '#c98f62'}" stroke-width="3" stroke-linecap="round"/>`;
@@ -266,6 +272,11 @@ function avatar(c, exprName = 'feliz', uid = 'a') {
   s += `<g transform="translate(${exL} ${p.ey})">${L(browL, bw, bcol)}</g>`;
   s += `<g transform="translate(${exR} ${p.ey}) scale(-1 1)">${L(browR, bw, bcol)}</g>`;
   s += parts.over || '';
+  if (hs !== 1) {
+    s += '</g>';
+    if (!c.noSymbols) { const k = p.symScale || 1; s += `<g transform="translate(${(256 * (1 - k)).toFixed(1)} ${(300 * (1 - k)).toFixed(1)}) scale(${k})">${symbols(E.sym, uid)}</g>`; }
+    return s + '</svg>';
+  }
   if (!c.noSymbols) s += symbols(E.sym, uid);
   return s + '</g></svg>';
 }

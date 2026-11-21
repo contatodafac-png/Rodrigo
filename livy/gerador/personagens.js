@@ -36,47 +36,47 @@ const button = (x, y, col = '#f4eee2') => `<circle cx="${x}" cy="${y}" r="6" fil
 const chars = {};
 
 // =================================================================== LIVY
-// Cabelo prateado como na referência; só a roupa é roxa.
+// Cabeça desenhada nas coordenadas da imagem de referência (514x640) e reduzida
+// (hs=0.9) para caber sobre os ombros. Cabelo prateado; só a roupa é roxa.
 const LIVY_HAIR = { base: '#e4e4e9', shade: '#b4b4c0', hi: '#ffffff' };
 const HOODIE = '#3a2578', HOODIE_DARK = '#24124f';
 chars.livy = {
-  key: 'livy', nome: 'Livy', profile: 'child',
+  key: 'livy', nome: 'Livy', profile: 'anime',
   skin: '#fbdcb4', skinShade: '#e8b98c', skinLine: '#cf9a6c',
   eyeCols: ['#b4420b', '#ff9b1d', '#ffe24d'], blush: '#ee8b8b', browColor: '#2b2b36',
   parts(ctx) {
     const { uid } = ctx, H = LIVY_HAIR;
-    const backD = symPath([256, 56], [
-      ['C', 158, 52, 70, 114, 66, 238],
-      ['C', 64, 320, 46, 392, 18, 452],
-      ['L', 78, 432], ['L', 56, 484], ['L', 112, 442], ['L', 102, 490], ['L', 156, 446], ['L', 150, 482], ['L', 196, 436], ['L', 256, 424]]);
-    const capD = symPath([256, 50], [
-      ['C', 168, 48, 90, 112, 90, 234],
-      ['C', 88, 300, 80, 368, 58, 432],
-      ['C', 96, 426, 116, 356, 124, 280],
-      ['L', 146, 230], ['L', 168, 264], ['L', 190, 224], ['L', 212, 266], ['L', 233, 232], ['L', 245, 246], ['L', 256, 314]]);
-    const back = P(backD, H.shade, 5);
-    const preNeck = `<ellipse cx="256" cy="512" rx="86" ry="32" fill="${HOODIE_DARK}" stroke="${INK}" stroke-width="5"/>`;
+    const backD = symPath([256, 28], [
+      ['C', 140, 26, 48, 120, 42, 270],
+      ['C', 40, 360, 28, 420, 8, 472],
+      ['L', 64, 446], ['L', 50, 504], ['L', 106, 458], ['L', 100, 508], ['L', 154, 464], ['L', 150, 500], ['L', 204, 470], ['L', 256, 452]]);
+    const capD = symPath([256, 32], [
+      ['C', 150, 30, 66, 124, 64, 266],
+      ['C', 62, 340, 52, 410, 34, 466],
+      ['C', 76, 446, 102, 388, 108, 320],
+      ['L', 122, 262], ['L', 146, 224], ['L', 166, 262], ['L', 196, 232], ['L', 216, 270], ['L', 240, 246], ['L', 256, 328]]);
+    const back = P(backD, H.shade, 5.5);
+    // hoodie / ombros (coordenadas da tela, não escaladas)
+    const preNeck = '';
     const strings = `${L('M226 560 C222 584 228 604 222 626', 9, INK)}${L('M226 560 C222 584 228 604 222 626', 4.5, '#efe8ff')}`
       + `${L('M286 560 C290 584 284 604 290 626', 9, INK)}${L('M286 560 C290 584 284 604 290 626', 4.5, '#efe8ff')}`
       + `<ellipse cx="222" cy="629" rx="5" ry="7" fill="#efe8ff" stroke="${INK}" stroke-width="3"/><ellipse cx="290" cy="629" rx="5" ry="7" fill="#efe8ff" stroke="${INK}" stroke-width="3"/>`;
     const folds = L('M92 618 Q120 590 150 604 M420 618 Q392 590 362 604', 3, '#1d0f3e', 'opacity="0.7"');
-    // fone de ouvido creme com detalhe verde-menta, apoiado nos ombros (faixa passa atrás do pescoço)
-    const band = () => { const d = 'M150 552 C150 520 172 496 206 502'; return `${L(d, 17, INK)}${L(d, 10, '#f4eee2')}`; };
+    const band = () => { const d = 'M146 552 C142 520 158 494 188 500'; return `${L(d, 17, INK)}${L(d, 10, '#f4eee2')}`; };
     const cup = (cx, cy, rot) => `<g transform="translate(${cx} ${cy}) rotate(${rot})">`
       + `<rect x="-31" y="-44" width="62" height="88" rx="27" fill="#f4eee2" stroke="${INK}" stroke-width="5"/>`
       + `<rect x="-20" y="-32" width="40" height="64" rx="18" fill="#2b1a55" stroke="${INK}" stroke-width="3"/>`
       + `<rect x="-14" y="-26" width="28" height="52" rx="13" fill="#3de0c2"/>`
       + `<rect x="-8" y="-19" width="6" height="20" rx="3" fill="#fff" opacity="0.85"/></g>`;
-    const body = bodyShape(ctx, { fill: HOODIE, nw: 54, nl: 24, extra: folds }) + band() + mirror(band());
-    const collar = `<path d="M202 520 C214 552 298 552 310 520" fill="none" stroke="${INK}" stroke-width="22" stroke-linecap="round"/>`
-      + `<path d="M202 520 C214 552 298 552 310 520" fill="none" stroke="${HOODIE_DARK}" stroke-width="13" stroke-linecap="round"/>`;
-    const bodyFront = collar + strings + cup(138, 572, -12) + cup(374, 572, 12);
-    const faceDecor = foreheadShadow(uid, capD, '#e8b98c', 18);
-    // fios finos no cabelo lateral (como na referência)
-    const strands = L('M80 250 C78 310 72 370 62 418 M104 262 C102 320 96 372 88 412', 2.6, '#8d8d9c', 'opacity="0.9"');
-    const front = shadedHair(uid, 'cap', capD, H, 18)
+    const body = bodyShape(ctx, { fill: HOODIE, nw: 72, nl: 24, extra: folds }) + band() + mirror(band());
+    const collar = `<path d="M184 520 C200 556 312 556 328 520" fill="none" stroke="${INK}" stroke-width="22" stroke-linecap="round"/>`
+      + `<path d="M184 520 C200 556 312 556 328 520" fill="none" stroke="${HOODIE_DARK}" stroke-width="13" stroke-linecap="round"/>`;
+    const bodyFront = collar + strings + cup(130, 574, -12) + cup(382, 574, 12);
+    const faceDecor = foreheadShadow(uid, capD, '#e8b98c', 20);
+    const strands = L('M44 300 C42 360 36 410 26 450 M82 300 C80 350 72 400 62 440', 2.8, '#8d8d9c', 'opacity="0.9"');
+    const front = shadedHair(uid, 'cap', capD, H, 20)
       + strands + mirror(strands)
-      + shineBoth(H, [256, 50], [168, 48], [90, 112], [90, 234], [0.18, 0.3, 0.42, 0.54, 0.66], 28, [256, 250], 24, 6);
+      + shineBoth(H, [256, 32], [150, 30], [66, 124], [64, 266], [0.14, 0.25, 0.36, 0.47, 0.58, 0.69], 38, [256, 290], 30, 7);
     return { back, preNeck, body, bodyFront, faceDecor, front };
   },
 };
